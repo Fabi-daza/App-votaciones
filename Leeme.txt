@@ -1,28 +1,44 @@
-Prueba técnica para el cargo de programador web
-
+Instrucciones para la Instalación de la Aplicación
 Nombre: Fabián Daza
 Correo: fabian.daza2020@gmail.com
 
-Version php: 8.2.12
-Version db: 10.4.32-MariaD
+Versión de PHP: 8.2.12
+Versión de la Base de Datos: 10.4.32-MariaDB
 
-Instrucciones:
+Requisitos Previos
+1- Instalación de XAMPP:
 
-1- Para poder correr esta aplicación, primero debemos instalar XAMPP
+Accede a la URL: https://www.apachefriends.org/es/download.html.
+Selecciona la opción acorde a tu sistema operativo y descarga XAMPP.
+Instala XAMPP siguiendo las instrucciones del instalador.
 
-    Para eso accedemos a la url: https://www.apachefriends.org/es/download.html y seleccionar la opcion acorde a tu sistema operativo.
+2- Configuración de XAMPP:
 
-2- Luego de instalar XAMPP se abrirá un panel de control donde se debe iniciar los servicios 'Apache' y 'MySql'
+Abre el Panel de Control de XAMPP.
+Inicia los servicios 'Apache' y 'MySQL'.
+Preparación del Entorno de Desarrollo:
 
-3- Crear la base de datos, para esto nos dirigimos a PhpMyadmin http://localhost/phpmyadmin y crear la base de datos 'app_votaciones'
+3- Navega a la carpeta de instalación de XAMPP.
+Accede a la carpeta htdocs.
+Agrega el repositorio de la aplicación en esta carpeta (htdocs).
 
-4- Importar la base de datos que se encuentra en el archivo app_votaciones.sql para esto debemos seleccionar la opción "importar" en PhpMyadmin y seleccionar este archivo. 
+4- Creación de la Base de Datos:
 
-5- Esta importación traera todas las tablas necesarias para correr la aplicacion:
-    -regiones
-    -comunas
-    -candidatos
-    -votaciones
+Abre PhpMyAdmin en tu navegador: http://localhost/phpmyadmin.
+Crea una nueva base de datos llamada app_votaciones.
 
-6- para acceder a la aplicacion debemos ingresar a http://localhost/App-votaciones
+5 - Importación de la Base de Datos:
+
+En PhpMyAdmin, selecciona la base de datos app_votaciones.
+Haz clic en la pestaña "Importar".
+Selecciona el archivo app_votaciones.sql y ejecútalo.
+Esta importación creará todas las tablas necesarias para ejecutar la aplicación:
+regiones
+comunas
+candidatos
+votaciones
+
+6- Acceso a la Aplicación:
+
+Abre tu navegador y navega a http://localhost/App-votaciones para acceder a la aplicación.
 
