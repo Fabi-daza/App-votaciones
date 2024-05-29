@@ -1,0 +1,28 @@
+Prueba técnica para el cargo de programador web
+
+Nombre: Fabián Daza
+Correo: fabian.daza2020@gmail.com
+
+Version php: 8.2.12
+Version db: 10.4.32-MariaD
+
+Instrucciones:
+
+1- Para poder correr esta aplicación, primero debemos instalar XAMPP
+
+    Para eso accedemos a la url: https://www.apachefriends.org/es/download.html y seleccionar la opcion acorde a tu sistema operativo.
+
+2- Luego de instalar XAMPP se abrirá un panel de control donde se debe iniciar los servicios 'Apache' y 'MySql'
+
+3- Crear la base de datos, para esto nos dirigimos a PhpMyadmin http://localhost/phpmyadmin y crear la base de datos 'app_votaciones'
+
+4- Importar la base de datos que se encuentra en el archivo app_votaciones.sql para esto debemos seleccionar la opción "importar" en PhpMyadmin y seleccionar este archivo. 
+
+5- Esta importación traera todas las tablas necesarias para correr la aplicacion:
+    -regiones
+    -comunas
+    -candidatos
+    -votaciones
+
+6- para acceder a la aplicacion debemos ingresar a http://localhost/App-votaciones
+
