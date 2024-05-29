@@ -1,4 +1,4 @@
-Instrucciones para la Instalación de la Aplicación
+Prueba técnica para el cargo de programador web
 Nombre: Fabián Daza
 Correo: fabian.daza2020@gmail.com
 
@@ -16,9 +16,10 @@ Instala XAMPP siguiendo las instrucciones del instalador.
 
 Abre el Panel de Control de XAMPP.
 Inicia los servicios 'Apache' y 'MySQL'.
-Preparación del Entorno de Desarrollo:
 
-3- Navega a la carpeta de instalación de XAMPP.
+3-Preparación del Entorno de Desarrollo:
+
+Navega a la carpeta de instalación de XAMPP.
 Accede a la carpeta htdocs.
 Agrega el repositorio de la aplicación en esta carpeta (htdocs).
 
