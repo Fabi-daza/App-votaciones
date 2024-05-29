@@ -1,3 +1,43 @@
+function formatearRut(rut) {
+    rut = rut.replace(/[^0-9kK]/g, '');
+    var numero = rut.slice(0, -1);
+    var dv = rut.slice(-1).toUpperCase();
+
+    if (!validarRut(numero, dv)) {
+        alert("RUT inválido");
+        return false;
+    }
+
+    return numero + "-" + dv;
+}
+
+function validarRut(numero, dv) {
+    if (numero.length < 7 || numero.length > 8) { 
+        alert("RUT inválido");
+        return false;
+    } else {
+        if (obtenerDV(numero) == dv.toUpperCase()) return true;
+    }
+    alert("RUT inválido");
+    return false;
+}
+
+function obtenerDV(numero){
+    nuevo_numero = numero.toString().split('').reverse().join('');
+    for (i = 0, j = 2, suma = 0; i < nuevo_numero.length; i++, ((j == 7) ? j = 2 : j++)){
+        suma += (parseInt(nuevo_numero.charAt(i)) * j);
+    }
+    n_dv = 11 - (suma % 11);
+    var dv = ((n_dv == 11) ? 0 : ((n_dv == 10) ? "K" : n_dv));
+    return dv;
+}
+
+
+function validarEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+}
+
 function validarCampos() {
     $(document).off('click', '#button').on('click', '#button', function(event) {
         event.preventDefault();
@@ -9,12 +49,18 @@ function validarCampos() {
         var comuna = $('#comuna');
         var candidato = $('#candidato');
 
-        if ($.trim(name.val()) == "") {
+        var rutFormateado = formatearRut(rut.val());
+
+        if (!rutFormateado) {
+            return;
+        }
+
+        if ($.trim(name.val()) === "") {
             alert("Por favor ingresa tu nombre");
             return;
         }
 
-        if ($.trim(alias.val()) == "") {
+        if ($.trim(alias.val()) === "") {
             alert("Debes ingresar un alias");
             return;
         }
@@ -30,30 +76,7 @@ function validarCampos() {
             return;
         }
 
-        function formatearRut(rut) {
-            rut = rut.replace(/[^0-9kK]/g, '');
-            if (rut.length < 8 || rut.length > 9) {
-                alert("RUT invalido");
-                return rut;
-            } else {
-                rut = rut.substring(0, rut.length - 1) + "-" + rut.charAt(rut.length - 1);
-            }
-            return rut;
-        }
-
-        if ($.trim(rut.val()) == "") {
-            alert("Debes ingresar un rut");
-            return;
-        } else {
-            rut.val(formatearRut(rut.val()));
-        }
-
-        function validarEmail(email) {
-            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return regex.test(email);
-        }
-
-        if (email.val().trim() === "") {
+        if ($.trim(email.val()) === "") {
             alert("Debes ingresar un Email");
             return;
         } else {
@@ -63,17 +86,17 @@ function validarCampos() {
             }
         }
 
-        if ($.trim(region.val()) == "") {
-            alert("Debes ingresar una Region");
+        if ($.trim(region.val()) === "") {
+            alert("Debes ingresar una Región");
             return;
         }
 
-        if ($.trim(comuna.val()) == "") {
+        if ($.trim(comuna.val()) === "") {
             alert("Debes ingresar una Comuna");
             return;
         }
 
-        if ($.trim(candidato.val()) == "") {
+        if ($.trim(candidato.val()) === "") {
             alert("Debes ingresar un Candidato");
             return;
         }
@@ -83,7 +106,7 @@ function validarCampos() {
             alert("Debes seleccionar al menos 2 opciones");
             return;
         } else {
-            optionsSelected = [];
+            var optionsSelected = [];
             checkedCheckboxes.each(function() {
                 optionsSelected.push($(this).val());
             });
@@ -93,6 +116,7 @@ function validarCampos() {
         sendForm(name.val(), alias.val(), rut.val(), email.val(), region.val(), comuna.val(), candidato.val(), optionsSelected);
     });
 }
+
 
 function sendForm(name, alias, rut, email, region, comuna, candidato, optionsSelected) {
     $.ajax({
@@ -158,7 +182,7 @@ $(document).on('change', '#region', function() {
 });
 
 function getComuna(region_id) {
-    if (region_id != '') {
+    if (region_id !== '') {
         $.ajax({
             url: 'php/data.php',
             type: 'GET',
